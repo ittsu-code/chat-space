@@ -20,6 +20,8 @@
 |------|----|-------|
 |text|text||
 |image|string||
+|created_at|datetime|null: false|
+|updated_at|datetime|null: false|
 |user_id|references|null: false, foreign_key: true|
 #### Association
 - belongs_to :group
