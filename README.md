@@ -1,40 +1,40 @@
 # README
 
-# ChatSpace DB設定
+## ChatSpace DB設定
 
-## usersテーブル
+### usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |email|string|null: false|
 |password|string|null: false|
 |name|string|null: false|
-### Association
+#### Association
 - has_many :messages
 - has_many :users_groups
 - has_many  :groups,  through:  :users_groups
 
-## messages テーブル
+### messages テーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
 |image|string||
 |user_id|integer|null: false, foreign_key: true|
-### Association
+#### Association
 - belongs_to :user
 
-## gruopsテーブル
+### gruopsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |group_name|text|null: false|
-### Association
+#### Association
 - has_many :users_groups
 - has_many  :users,  through:  :users_groups
 
-## users_groupsテーブル
+### users_groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
-### Association
+#### Association
 - belongs_to :user
 - belongs_to :group
