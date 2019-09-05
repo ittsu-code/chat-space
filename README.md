@@ -28,7 +28,7 @@
 ### gruopsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|references|null: false|
+|name|string|null: false|
 |created_at|datetime|null: false|
 |updated_at|datetime|null: false|
 #### Association
