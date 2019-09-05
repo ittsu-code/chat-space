@@ -29,6 +29,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
+|created_at|datetime|null: false|
+|updated_at|datetime|null: false|
 #### Association
 - has_many :messages
 - has_many :users_groups
