@@ -18,7 +18,7 @@
 ### messages テーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
+|text|text||
 |image|blob||
 |user_id|integer|null: false, foreign_key: true|
 #### Association
