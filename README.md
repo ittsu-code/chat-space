@@ -28,7 +28,7 @@
 ### gruopsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_name|text|null: false|
+|name|string|null: false|
 #### Association
 - has_many :messages
 - has_many :users_groups
