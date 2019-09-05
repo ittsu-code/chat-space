@@ -12,6 +12,8 @@
 - has_many :messages
 - has_many :users_groups
 - has_many  :groups,  through:  :users_groups
+#### index
+- add_index :users, :name
 
 ### messages テーブル
 |Column|Type|Options|
