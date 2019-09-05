@@ -19,7 +19,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
-|image|string||
+|image|blob||
 |user_id|integer|null: false, foreign_key: true|
 #### Association
 - belongs_to :group
@@ -28,7 +28,7 @@
 ### gruopsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|name|references|null: false|
 |created_at|datetime|null: false|
 |updated_at|datetime|null: false|
 #### Association
