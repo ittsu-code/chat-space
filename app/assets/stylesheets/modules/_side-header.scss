@@ -1,0 +1,28 @@
+.side-header {
+  height: 100px;
+  display: flex;
+  padding: 0 20px;
+  align-items: center;
+  background-color: $SideHeaderColor;
+      &__box{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+        &--user-name{
+          text-align: center;
+        }
+        &__menu{
+        display: flex;
+        &__new-group{
+        margin-right: 0.3rem;
+        color: white;
+        text-decoration: none;
+        }
+        &__edit-user{
+        color: white;
+        text-decoration: none;
+        }
+        }
+      }
+    }

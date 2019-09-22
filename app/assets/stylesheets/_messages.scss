@@ -1,0 +1,19 @@
+@import "./modules/flash-box";
+
+.wrapper{
+.chat-side{
+  width: 300px;
+  float: left;
+  color: white;
+  @import "./modules/side-header";
+  @import "./modules/groups";
+}
+
+.chat-main{
+  width: calc(100vw - 300px);
+  float: left;
+  @import "./modules/main-header";
+  @import "./modules/meaasage";
+  @import "./modules/form";
+  }
+}
