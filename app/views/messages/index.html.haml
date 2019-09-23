@@ -1,5 +1,5 @@
-    .flash-box
-      .notice
+.flash-box
+  .flash-box_notice
 
     .wrapper
       .chat-side
@@ -9,7 +9,7 @@
             %ul.side-header__box__menu
               =link_to "group", class: "side-header__box__menu__new-group" do
                 = fa_icon 'edit'
-              =link_to "user", class: "side-header__box__menu__edit-user" do
+              =link_to edit_user_registration_path, class: "side-header__box__menu__edit-user" do
                 = fa_icon 'cog'
         .groups
           .group
