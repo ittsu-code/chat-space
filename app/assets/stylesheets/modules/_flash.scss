@@ -1,0 +1,17 @@
+.notification{
+    color: white;
+    font-size: 1rem;
+    font-weight: lighter;
+    text-align: center;
+    width: 100vw;
+    .notice{
+      background-color: $SkyBlue;
+      color: #FFF;
+      text-align: center;
+    }
+    .alert {
+    background-color: #F35500;
+    color: #FFF;
+    text-align: center;
+  }
+}
