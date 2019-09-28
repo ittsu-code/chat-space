@@ -1,39 +1,37 @@
-.flash-box
-  .flash-box_notice
-
-    .wrapper
-      .chat-side
-        .side-header
-          .side-header__box
-            %p.side-header__box__user-name Name
-            %ul.side-header__box__menu
-              =link_to "group", class: "side-header__box__menu__new-group" do
-                = fa_icon 'edit'
-              =link_to edit_user_registration_path, class: "side-header__box__menu__edit-user" do
-                = fa_icon 'cog'
-        .groups
-          .group
-            %p.group__group-name1 group1
-            %p.group__latest-message1 sample message1
-          .group
-            %p.group__group-name2 group2
-            %p.group__latest-message2 sample message2
-            
-      .chat-main
-        .main-header
-          .main-header__left-box
-            %h2.main-header__left-box__current-group
-              Current Group
-            %ul.main-header__left-box__member-list
-              Member：
-              %li.main-header__left-box__member-list__member Ruby, Python
-          =link_to "Edit", "#", class: "main-header__edit-btn"
-        .messages
-        .form
-          %form.new_message{"accept-charset": "UTF-8", action: "/"}
-            .input-box
-              %input.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
-              %label.input-box__image{for: "message_image"}
-                %i.fa.fa-image
-                %input.input-box__image__file{name: "message_image", type: "file"}/
-            %input.submit-btn{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
+.wrapper
+  .chat-side
+    .side-header
+      .side-header__box
+        %p.side-header__box__user-name 
+          = current_user.Name
+        %ul.side-header__box__menu
+          =link_to "group", class: "side-header__box__menu__new-group" do
+            = fa_icon 'edit'
+          =link_to edit_user_path(current_user), class: "side-header__box__menu__edit-user" do
+            = fa_icon 'cog'
+    .groups
+      .group
+        %p.group__group-name1 group1
+        %p.group__latest-message1 sample message1
+      .group
+        %p.group__group-name2 group2
+        %p.group__latest-message2 sample message2
+        
+  .chat-main
+    .main-header
+      .main-header__left-box
+        %h2.main-header__left-box__current-group
+          Current Group
+        %ul.main-header__left-box__member-list
+          Member：
+          %li.main-header__left-box__member-list__member Ruby, Python
+      =link_to "Edit", "#", class: "main-header__edit-btn"
+    .messages
+    .form
+      %form.new_message{"accept-charset": "UTF-8", action: "/"}
+        .input-box
+          %input.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
+          %label.input-box__image{for: "message_image"}
+            %i.fa.fa-image
+            %input.input-box__image__file{name: "message_image", type: "file"}/
+        %input.submit-btn{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
