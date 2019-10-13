@@ -34,6 +34,7 @@ $(function () {
         $('.messages').append(html)
         $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight });
         $('#message_text').val('')
+        $('.submit-btn').attr('disabled', false);
       })
       .fail(function () {
         alert('error');
