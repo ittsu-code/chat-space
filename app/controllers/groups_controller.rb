@@ -1,7 +1,5 @@
 class GroupsController < ApplicationController
   def index
-    # @group = Group.new
-    @group = Group.find(1)
     @message = Message.new
   end
 
