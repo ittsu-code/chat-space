@@ -31,10 +31,9 @@ $(function () {
     })
       .done(function (data) {
         var html = buildHTML(data);
-        console.log(html)
         $('.messages').append(html)
         $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight });
-        $('#message_text').val('')
+        $('.new_message')[0].reset();
         $('.submit-btn').attr('disabled', false);
       })
       .fail(function () {
