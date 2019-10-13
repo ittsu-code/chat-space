@@ -16,4 +16,5 @@
             .group__name
               = group.name
             .group__message
-              = 'MESSAGE'
+              = message.text
+              = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
