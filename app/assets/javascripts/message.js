@@ -32,6 +32,7 @@ $(function () {
         var html = buildHTML(data);
         console.log(html)
         $('.messages').append(html)
+        $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight });
         $('#message_text').val('')
       })
       .fail(function () {
