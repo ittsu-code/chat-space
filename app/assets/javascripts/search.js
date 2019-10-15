@@ -12,6 +12,10 @@ $(function () {
     search_list.append(html);
   }
 
+  $(document).on("click", ".user-search-add", function () {
+    console.log('テスト')
+  });
+
   function appendErrMsgToHTML(msg) {
     var html = `<div class='.chat-group-user clearfix'>${msg}</div>`
     search_list.append(html);
