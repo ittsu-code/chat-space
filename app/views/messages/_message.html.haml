@@ -4,7 +4,7 @@
       = message.user.name
     .message__upper-info__date
       = message.created_at.strftime("%Y/%m/%d %H:%M")
-  .message__text
+  .message__text{data: {id: message.id}}
   = message.text
   = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
 
