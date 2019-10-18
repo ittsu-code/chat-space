@@ -1,10 +1,11 @@
 class GroupsController < ApplicationController
+
   def index
-    @message = Message.new
   end
 
   def new
     @group = Group.new
+    @group.users << current_user
   end
 
   def create
@@ -18,6 +19,7 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
+    @user = @group.users.where.not(id: current_user.id)
   end
 
   def update
