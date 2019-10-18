@@ -12,7 +12,6 @@ $(function() {
     search_list.append(html);
   }
   $(document).on("click", ".user-search-add", function() {
-    console.log(this);
     var html = `
     <div class='chat-group-user'>
       <input name='group[user_ids][]' type='hidden' value=${$(
@@ -26,6 +25,12 @@ $(function() {
     `;
     search_member.append(html);
     $("#search-result").empty();
+  });
+
+  $(document).on("click", ".user-search-remove", function(user) {
+    $(this)
+      .parent()
+      .remove();
   });
 
   function appendErrMsgToHTML(msg) {
