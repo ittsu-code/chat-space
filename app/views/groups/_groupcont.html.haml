@@ -23,11 +23,12 @@
           %input{name: "group[user_ids][]", type: "hidden", value: current_user.id}
           %p.chat-group-user__name= current_user.name
 
+      - if @user != nil
         .chat-group-user
-          - @user.each do |n|
-            %input{name: "group[user_ids][]", type: "hidden", value: n.id}
+          - @user.each do |member|
+            %input{name: "group[user_ids][]", type: "hidden", value: member.id}
             %p.chat-group-user__name
-            = n.name
+            = member.name
             .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
   .chat-group-form__field
     .chat-group-form__field--left
