@@ -1,25 +1,57 @@
 $(function() {
-  function buildHTML(message) {
-    var image =
-      message.image !== null
-        ? `<img class="lower-message__image" src=${message.image}>`
-        : "";
-    var html = `
-    <div class="message" data-id=${message.id}>
-      <div class="message__upper-info">
+  var buildHTML = function(message) {
+    if (message.text && message.image.url) {
+      var html = `
+        <div class="message" data-id=${message.id}> 
+        <div class="message__upper-info">
         <div class="message__upper-info__talker">
-        ${message.user}
+        ${message.user_name}
         </div>
         <div class="message__upper-info__date">
         ${message.created_at}
         </div>
-      </div>
-    <div class="message__text"></div>
-    ${message.text}
-    ${image}
-    </div>`;
+        </div>
+        <div class="lower-message">
+        <p class="lower-message__content">
+        <% ${message.text} if ${message.text} != nil %>
+        </p>
+        <% <img src="${message.image.url}" class="lower-message__image" > if ${message.image.url} != nil %>
+        </div>
+        </div>`;
+    } else if (message.text) {
+      var html = `
+        <div class="message" data-id=${message.id}> 
+        <div class="message__upper-info">
+        <div class="message__upper-info__talker ">
+        ${message.user_name}
+        </div>
+        <div class="message__upper-info__date">
+        ${message.created_at}
+        </div>
+        </div>
+        <div class="lower-message">
+        <p class="lower-message__content">
+        ${message.text}
+        </p>
+        </div>
+        </div>`;
+    } else if (message.image.url) {
+      var html = `<div class="message" data-id=${message.id}> 
+        <div class="message__upper-info">
+        <div class="message__upper-info__talker">
+        ${message.user_name}
+        </div>
+        <div class="message__upper-info__date">
+        ${message.created_at}
+        </div>
+        </div>
+        <div class="lower-message">
+        <img src="${message.image.url}" class="lower-message__image" >
+        </div>
+        </div>`;
+    }
     return html;
-  }
+  };
   $("#new_message").on("submit", function(e) {
     e.preventDefault();
     var formData = new FormData(this);
@@ -44,19 +76,28 @@ $(function() {
       });
   });
 
-  var reloadMessage = function() {
-    var last_message_id = $(".message:last").data("message-id");
+  var reloadMessages = function() {
+    var last_message_id = $(".message:last").data("id");
     $.ajax({
-      url: "/api/messages",
+      url: "api/messages",
       type: "get",
       dataType: "json",
       data: { id: last_message_id }
     })
       .done(function(messages) {
-        console.log("success");
+        var insertHTML = "";
+        messages.forEach(function(message) {
+          insertHTML = buildHTML(message);
+          $(".messages").append(insertHTML);
+          $(".messages").animate(
+            { scrollTop: $(".messages")[0].scrollHeight },
+            "fast"
+          );
+        });
       })
       .fail(function() {
         console.log("error");
       });
   };
+  setInterval(reloadMessages, 5000);
 });
