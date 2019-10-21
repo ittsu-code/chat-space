@@ -1,9 +1,6 @@
-$(function() {
+$(function () {
   function buildHTML(message) {
-    var image =
-      message.image !== null
-        ? `<img class="lower-message__image" src=${message.image.url}>`
-        : "";
+    var image = message.image ? `<img class="lower-message__image" src=${message.image.url}>` : "";
     var html = `
       <div class="message" data-id=${message.id}>
         <div class="message__upper-info">
@@ -23,7 +20,7 @@ $(function() {
       </div>`;
     return html;
   }
-  $("#new_message").on("submit", function(e) {
+  $("#new_message").on("submit", function (e) {
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr("action");
@@ -35,19 +32,19 @@ $(function() {
       processData: false,
       contentType: false
     })
-      .done(function(data) {
+      .done(function (data) {
         var html = buildHTML(data);
         $(".messages").append(html);
         $(".messages").animate({ scrollTop: $(".messages")[0].scrollHeight });
         $(".new_message")[0].reset();
         $(".submit-btn").attr("disabled", false);
       })
-      .fail(function() {
+      .fail(function () {
         alert("error");
       });
   });
 
-  var reloadMessages = function() {
+  var reloadMessages = function () {
     var last_message_id = $(".message:last").data("id");
     $.ajax({
       url: "api/messages",
@@ -55,9 +52,9 @@ $(function() {
       dataType: "json",
       data: { id: last_message_id }
     })
-      .done(function(messages) {
+      .done(function (messages) {
         var insertHTML = "";
-        messages.forEach(function(message) {
+        messages.forEach(function (message) {
           insertHTML = buildHTML(message);
           $(".messages").append(insertHTML);
           $(".messages").animate(
@@ -66,7 +63,7 @@ $(function() {
           );
         });
       })
-      .fail(function() {
+      .fail(function () {
         console.log("error");
       });
   };
