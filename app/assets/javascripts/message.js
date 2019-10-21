@@ -1,57 +1,28 @@
 $(function() {
-  var buildHTML = function(message) {
-    if (message.text && message.image.url) {
-      var html = `
-        <div class="message" data-id=${message.id}> 
+  function buildHTML(message) {
+    var image =
+      message.image !== null
+        ? `<img class="lower-message__image" src=${message.image.url}>`
+        : "";
+    var html = `
+      <div class="message" data-id=${message.id}>
         <div class="message__upper-info">
-        <div class="message__upper-info__talker">
-        ${message.user_name}
+          <div class="message__upper-info__talker">
+          ${message.user_name}
+          </div>
+          <div class="message__upper-info__date">
+          ${message.created_at}
+          </div>
         </div>
-        <div class="message__upper-info__date">
-        ${message.created_at}
-        </div>
-        </div>
-        <div class="lower-message">
-        <p class="lower-message__content">
-        <% ${message.text} if ${message.text} != nil %>
-        </p>
-        <% <img src="${message.image.url}" class="lower-message__image" > if ${message.image.url} != nil %>
-        </div>
-        </div>`;
-    } else if (message.text) {
-      var html = `
-        <div class="message" data-id=${message.id}> 
-        <div class="message__upper-info">
-        <div class="message__upper-info__talker ">
-        ${message.user_name}
-        </div>
-        <div class="message__upper-info__date">
-        ${message.created_at}
-        </div>
-        </div>
-        <div class="lower-message">
-        <p class="lower-message__content">
-        ${message.text}
-        </p>
-        </div>
-        </div>`;
-    } else if (message.image.url) {
-      var html = `<div class="message" data-id=${message.id}> 
-        <div class="message__upper-info">
-        <div class="message__upper-info__talker">
-        ${message.user_name}
-        </div>
-        <div class="message__upper-info__date">
-        ${message.created_at}
-        </div>
-        </div>
-        <div class="lower-message">
-        <img src="${message.image.url}" class="lower-message__image" >
-        </div>
-        </div>`;
-    }
+          <div class="lower-message">
+          <p class="lower-message__content">
+          ${message.text}
+          </p>
+          ${image}
+          </div>
+      </div>`;
     return html;
-  };
+  }
   $("#new_message").on("submit", function(e) {
     e.preventDefault();
     var formData = new FormData(this);
