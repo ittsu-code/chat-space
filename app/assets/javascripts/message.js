@@ -51,13 +51,15 @@ $(function () {
         url: "api/messages",
         type: "get",
         dataType: "json",
-        data: { id: last_message_id }
+        data: { id: last_message_id },
+        processData: false,
+        contentType: false
       })
         .done(function (messages) {
           var insertHTML = "";
           messages.forEach(function (message) {
             insertHTML = buildHTML(message);
-            $(".messages").append(insertHTML);
+            $(".message").append(insertHTML);
             $(".messages").animate(
               { scrollTop: $(".messages")[0].scrollHeight },
               "fast"
