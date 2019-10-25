@@ -56,10 +56,10 @@ $(function () {
         contentType: false
       })
         .done(function (messages) {
+          $(".messages").removed();
           var insertHTML = "";
           messages.forEach(function (message) {
             insertHTML = buildHTML(message);
-            $(".messages").removed();
             $(".messages").append(insertHTML);
             $(".messages").animate(
               { scrollTop: $(".messages")[0].scrollHeight },
