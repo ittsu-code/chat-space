@@ -47,7 +47,6 @@ $(function () {
   var reloadMessages = function () {
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
       var last_message_id = $('.message:last').data("id");
-      console.log(last_message_id)
       $.ajax({
         url: "api/messages",
         type: "get",
@@ -60,6 +59,7 @@ $(function () {
           var insertHTML = "";
           messages.forEach(function (message) {
             insertHTML = buildHTML(message);
+            $(".messages").removed();
             $(".messages").append(insertHTML);
             $(".messages").animate(
               { scrollTop: $(".messages")[0].scrollHeight },
