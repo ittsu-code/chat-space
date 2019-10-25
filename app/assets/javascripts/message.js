@@ -46,7 +46,7 @@ $(function () {
 
   var reloadMessages = function () {
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
-      var last_message_id = $('.message:last').data("id");
+      var last_message_id = $('.message:last').data('id');
       $.ajax({
         url: "api/messages",
         type: "get",
@@ -56,7 +56,6 @@ $(function () {
         contentType: false
       })
         .done(function (messages) {
-          $(".messages").removed();
           var insertHTML = "";
           messages.forEach(function (message) {
             insertHTML = buildHTML(message);
